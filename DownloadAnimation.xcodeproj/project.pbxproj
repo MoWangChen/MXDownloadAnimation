@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD2FAAFD1E7FC5E600A161D2 /* MXDownloaderMath.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2FAAFC1E7FC5E600A161D2 /* MXDownloaderMath.m */; };
+		DD2FAB001E7FC8DD00A161D2 /* MXDownloadProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2FAAFF1E7FC8DD00A161D2 /* MXDownloadProgressView.m */; };
+		DD2FAB031E7FC90300A161D2 /* MXDownloadButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2FAB021E7FC90300A161D2 /* MXDownloadButton.m */; };
 		DD81687C1D5DBFF600654BC4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD81687B1D5DBFF600654BC4 /* main.m */; };
 		DD81687F1D5DBFF600654BC4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD81687E1D5DBFF600654BC4 /* AppDelegate.m */; };
 		DD8168821D5DBFF600654BC4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8168811D5DBFF600654BC4 /* ViewController.m */; };
@@ -35,6 +38,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DD2FAAFB1E7FC5E600A161D2 /* MXDownloaderMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXDownloaderMath.h; sourceTree = "<group>"; };
+		DD2FAAFC1E7FC5E600A161D2 /* MXDownloaderMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXDownloaderMath.m; sourceTree = "<group>"; };
+		DD2FAAFE1E7FC8DD00A161D2 /* MXDownloadProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXDownloadProgressView.h; sourceTree = "<group>"; };
+		DD2FAAFF1E7FC8DD00A161D2 /* MXDownloadProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXDownloadProgressView.m; sourceTree = "<group>"; };
+		DD2FAB011E7FC90300A161D2 /* MXDownloadButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXDownloadButton.h; sourceTree = "<group>"; };
+		DD2FAB021E7FC90300A161D2 /* MXDownloadButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXDownloadButton.m; sourceTree = "<group>"; };
 		DD8168771D5DBFF600654BC4 /* DownloadAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DownloadAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD81687B1D5DBFF600654BC4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DD81687D1D5DBFF600654BC4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -78,6 +87,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DD2FAAFA1E7FBDB300A161D2 /* MXButton */ = {
+			isa = PBXGroup;
+			children = (
+				DD2FAAFB1E7FC5E600A161D2 /* MXDownloaderMath.h */,
+				DD2FAAFC1E7FC5E600A161D2 /* MXDownloaderMath.m */,
+				DD2FAAFE1E7FC8DD00A161D2 /* MXDownloadProgressView.h */,
+				DD2FAAFF1E7FC8DD00A161D2 /* MXDownloadProgressView.m */,
+				DD2FAB011E7FC90300A161D2 /* MXDownloadButton.h */,
+				DD2FAB021E7FC90300A161D2 /* MXDownloadButton.m */,
+			);
+			path = MXButton;
+			sourceTree = "<group>";
+		};
 		DD81686E1D5DBFF600654BC4 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +123,7 @@
 		DD8168791D5DBFF600654BC4 /* DownloadAnimation */ = {
 			isa = PBXGroup;
 			children = (
+				DD2FAAFA1E7FBDB300A161D2 /* MXButton */,
 				DD81687D1D5DBFF600654BC4 /* AppDelegate.h */,
 				DD81687E1D5DBFF600654BC4 /* AppDelegate.m */,
 				DD8168801D5DBFF600654BC4 /* ViewController.h */,
@@ -271,9 +294,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD2FAB031E7FC90300A161D2 /* MXDownloadButton.m in Sources */,
 				DD8168821D5DBFF600654BC4 /* ViewController.m in Sources */,
+				DD2FAB001E7FC8DD00A161D2 /* MXDownloadProgressView.m in Sources */,
 				DD81687F1D5DBFF600654BC4 /* AppDelegate.m in Sources */,
 				DD81687C1D5DBFF600654BC4 /* main.m in Sources */,
+				DD2FAAFD1E7FC5E600A161D2 /* MXDownloaderMath.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
