@@ -7,81 +7,61 @@
 //
 
 #import "MXDownloadButton.h"
-#import "MXDownloaderMath.h"
-
-#define MXDownloadDefaultColor [UIColor colorWithRed: 50 / 255.f green: 171 / 255.f blue: 155 / 255.f alpha: 1]
+#import "MXDownloadProgressView.h"
 
 @interface MXDownloadButton ()
-{
-    NSInteger _count;
-}
-@property (nonatomic, strong) CADisplayLink *gameTime;
+
+@property (nonatomic, strong) CAShapeLayer *arrow;
+@property (nonatomic, strong) MXDownloadProgressView *progressView;
 
 @end
 
 @implementation MXDownloadButton
 
+#pragma mark - Override
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _count = 0;
+        self.progressView = [[MXDownloadProgressView alloc] initWithFrame:frame];
+        [self addSubview:self.progressView];
+        
+        [self addTarget:self action:@selector(startUpdownloadAction) forControlEvents:UIControlEventTouchUpInside];
+        [self test];
     }
     return self;
 }
 
-#pragma mark - 动画开启
-- (void)startAnimation
+#pragma mark - 绘制箭头曲线
+- (UIBezierPath *)drawArrow
 {
-    if (self.gameTime != nil) {
-        [self stopAnimation];
-    }
-    
-    self.gameTime = [CADisplayLink displayLinkWithTarget:self
-                                                selector:@selector(refreshAnimation)];
-    
-    [self.gameTime addToRunLoop:[NSRunLoop currentRunLoop]
-                        forMode:NSRunLoopCommonModes];
+    CGFloat startPos = self.frame.size.width / 3.f;
+    CGFloat centerPos = self.frame.size.height / 2.f;
+    UIBezierPath *path = [[UIBezierPath alloc] init];
+    [path moveToPoint:CGPointMake(centerPos, startPos)];
+    [path addLineToPoint:CGPointMake(centerPos, 2 * startPos)];
+    [path addLineToPoint:CGPointMake(startPos, centerPos)];
+    [path moveToPoint:CGPointMake(centerPos, 2 * startPos)];
+    [path addLineToPoint:CGPointMake(2 * startPos, centerPos)];
+    return path;
 }
 
-#pragma mark - 动画关闭
-- (void)stopAnimation
+- (void)startUpdownloadAction
 {
-    //安全释放DispalayLink
-    [self.gameTime invalidate];
-    self.gameTime = nil;
+    [self.arrow removeFromSuperlayer];
+    [self.progressView setNextProgress:1];
 }
 
-#pragma mark - 动画刷新,判断是否需要添加动点
-- (void)refreshAnimation
+#pragma mark - Click Action
+- (void)test
 {
-    if (!self.isProgressing) {
-        [self stopAnimation];
-    }
-    
-    // 这里是CADisplayLink出发函数
-    // count变量为一个频率计时器
-    // 并且最大值为49,可以通过控制周期最大数值
-    // 从而影响生成新小球的生成频率
-    _count++;
-    _count %= 50 ;
-    
-    if (_count == 40) {
-        [self readyPointAnimation:[MXDownloaderMath ]]
-    }
+    self.arrow = [CAShapeLayer layer];
+    self.arrow.strokeColor = MXDownloadDefaultColor.CGColor;
+    self.arrow.lineWidth = 3.f;
+    self.arrow.lineJoin = kCALineCapRound;
+    self.arrow.lineCap = kCALineCapRound;
+    self.arrow.path = [self drawArrow].CGPath;
+    [self.layer addSublayer:self.arrow];
 }
-
-#pragma mark - 进入动画,传入起始坐标点
-- (void)readyPointAnimation:(CGPoint)center
-{
-    CGFloat pointRadius = 8.f;
-    CALayer *shape = [[CALayer alloc] init];
-    shape.backgroundColor = MXDownloadDefaultColor.CGColor;
-    shape.cornerRadius = pointRadius;
-    shape.frame = (CGRect){center.x, center.y,pointRadius * 2, pointRadius * 2};
-    [self.layer addSublayer:shape];
-    
-}
-
 
 @end

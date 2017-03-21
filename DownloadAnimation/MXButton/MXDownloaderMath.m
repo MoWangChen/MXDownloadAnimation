@@ -7,7 +7,6 @@
 //
 
 #import "MXDownloaderMath.h"
-#import <UIKit/UIKit.h>
 
 @implementation MXDownloaderMath
 
@@ -36,11 +35,17 @@
     CGPoint O_center = CGPointMake((A.x + B.x) / 2.f, (A.y + B.y) / 2.f);
     CGFloat d = [self calcDistance:O_center to:A];
     CGFloat k = d / 40.f;
-    return CGPointZero;
+    if (isRandom) {
+        int isRandom_int = arc4random() % 2;
+        if (isRandom_int) k = -k;
+    }
+    CGFloat new_x = (A.x + B.x) / 2.f + (A.y - B.y) / 2.f / k;
+    CGFloat new_y = (A.y + B.y) / 2.f + (B.x - A.x) / 2.f / k;
+    return CGPointMake(new_x, new_y);
 }
 
 #pragma mark - 计算Begin point
-- (CGPoint)calcBeginPoint:(CGPoint)O radius:(CGFloat)r coefficient:(CGFloat)k
++ (CGPoint)calcBeginPoint:(CGPoint)O radius:(CGFloat)r coefficient:(CGFloat)k
 {
     CGFloat dis = r * k;
     CGPoint ans;
@@ -48,7 +53,7 @@
     //生成角度
     int angle = arc4random() % 360;
     double radian = (double)angle / 360 * M_PI * 2;
-    ans = CGPointMake(O.x + dis * cos(radian), O.y + sin(radian));
+    ans = CGPointMake(O.x + dis * cos(radian), O.y + dis * sin(radian));
     
     return ans;
 }

@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "MXDownloadButton.h"
 
 @interface ViewController ()
 
@@ -18,7 +19,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.view.backgroundColor = [UIColor blackColor];
+    
+    MXDownloadButton *button = [[MXDownloadButton alloc] initWithFrame:CGRectMake(0, 0, 150, 150)];
+    button.center = self.view.center;
+    [self.view addSubview:button];
 }
 
 - (void)didReceiveMemoryWarning {

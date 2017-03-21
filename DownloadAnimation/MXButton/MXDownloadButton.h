@@ -10,6 +10,4 @@
 
 @interface MXDownloadButton : UIButton
 
-@property (nonatomic, assign) BOOL isProgressing;
-
 @end
